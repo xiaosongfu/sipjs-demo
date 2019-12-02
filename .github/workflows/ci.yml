@@ -1,0 +1,20 @@
+name: ci
+
+on:
+  push:
+    branches: 
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout source code
+      uses: actions/checkout@v1
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@2.0.3
+      env:
+        ACCESS_TOKEN: ${{ secrets.deploy_secret }}
+        BRANCH: gh-pages
+        FOLDER: dist
+        BUILD_SCRIPT: npm install && npm run build
