@@ -50,7 +50,7 @@
 
 <script>
   import { UA } from 'sip.js'
-  import { freeSWITCHServerAddr, freeSWITCHWebSocketAddr } from '../config'
+  import { freeSWITCHUserDomain, freeSWITCHWebSocketAddr } from '../config'
 
   export default {
     name: 'sip',
@@ -73,7 +73,7 @@
     methods: {
       login () {
         let config = {
-          uri: `${this.account}@${freeSWITCHServerAddr}`,
+          uri: `${this.account}@${freeSWITCHUserDomain}`,
           transportOptions: {
             wsServers: freeSWITCHWebSocketAddr,
             traceSip: true,
@@ -136,7 +136,7 @@
             return
           }
 
-          this.session = this.ua.invite(`${this.destNumber}@${freeSWITCHServerAddr}`, {
+          this.session = this.ua.invite(`${this.destNumber}@${freeSWITCHUserDomain}`, {
             sessionDescriptionHandlerOptions: {
               constraints: {
                 audio: true,
