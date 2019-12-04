@@ -170,7 +170,7 @@
 
           this.session.on('failed', (response, cause) => {
             this.$message.error('呼叫失败')
-            this.$message.info(`呼叫失败, response: ${response}, cause=${cause}`)
+            console.log(`呼叫失败, response: ${response}, cause=${cause}`)
 
             this.showOutgoingCallDialog = false
           })
